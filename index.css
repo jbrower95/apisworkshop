@@ -1,10 +1,26 @@
-h1 {
+body {
 	text-align: center;
 	font-family: "Source Sans Pro"
 }
 
 /* Our puppie images */
+#imageContainer
+{
+  width: 80%;
+  overflow: auto;
+  position: relative;
+  margin: auto;
+}
+
 .puppy {
-	width: 200px;
-	height: 200px;
+  float: left;
+  display: inline;
+  height: 200px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.caption {
+  margin-top: 20px;
+  font-size: 20px;
 }
