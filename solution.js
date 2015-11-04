@@ -40,6 +40,19 @@ function insertImage(url) {
 	img.className = "puppy";
 	img.src = url;
 
+	$(img).hover(function() {
+		//in
+		$(this).animate({opacity: .55});
+	}, function() {
+		//out
+		$(this).animate({opacity: 1});
+	});
+
+	img.onclick = function() {
+		var win = window.open(url, '_blank');
+ 	 	win.focus();
+	};
+
 	/* Append the image tag */
 	$('#imageContainer').append(img);
 }

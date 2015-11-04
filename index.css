@@ -5,12 +5,13 @@ body {
 }
 
 /* Our puppie images */
-#imageContainer
-{
+#imageContainer {
   width: 80%;
   overflow: auto;
   position: relative;
+  padding-top: 20px;
   margin: auto;
+  height:80%;
 }
 
 .puppy {
@@ -18,6 +19,9 @@ body {
   display: inline;
   height: 200px;
   margin: 5px;
+  -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
 }
 
 /* Caption */

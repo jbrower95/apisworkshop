@@ -39,6 +39,13 @@ function insertImage(url) {
 	var img = document.createElement("img");
 	img.className = "puppy";
 	img.src = url;
+	img.onmouseover = function() {
+		$(this).animate({opacity: .25});
+	};
+	img.onclick = function() {
+		var win = window.open(url, '_blank');
+ 	 	win.focus();
+	};
 
 	/* Append the image tag */
 	$('#imageContainer').append(img);
