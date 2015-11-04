@@ -5,7 +5,8 @@ var captions_few = [
 	"Dawwwww",
 	"Yummy",
 	"Awww, what a cute wittle puppy",
-	"Excuse me, is this your dog?"
+	"Excuse me, is this your dog?",
+	"Doge."
 ];
 
 var captions_several = [
@@ -14,12 +15,12 @@ var captions_several = [
 	"It's not that I don't like dogs...",
 	"I mean, do you really need this many dogs?",
 	"Alright, alright...it's your web page",
-	"*laughs nervously*",
+	"*laughs nervously*"
 ];
 
 var captions_many = [
 	"Stop. Too many dogs.",
-	"I thought there couldn't be enough, but now there are too many",
+	"How could you let this happen??",
 	"I...I have to leave",
 	"You made this what it is, now you have to face the consequences",
 	"*prays*",
@@ -140,6 +141,10 @@ var flickrAPI = {
 /**
  * Instigates a Flickr search for images tagged as "key". Returns "count" number of images.
  *   e.x: searchForImages("dog", 10) returns 10 pictures of dogs.
+ *
+ * @param taglist - Array of tags to search for using the api
+ * @param count - Number of results to return
+ * @param page - The page number from which to return the results
  *
  */
 function searchForImages(taglist, count, page) {
