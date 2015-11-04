@@ -1,3 +1,4 @@
+/* Feel free to edit this file, and adjust the styles! */
 body {
 	text-align: center;
 	font-family: "Source Sans Pro"
@@ -16,10 +17,10 @@ body {
   float: left;
   display: inline;
   height: 200px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin: 5px;
 }
 
+/* Caption */
 .caption {
   margin-top: 20px;
   font-size: 20px;
