@@ -6,7 +6,7 @@ var captions_few = [
 	"Yummy",
 	"Awww, what a cute wittle puppy",
 	"Excuse me, is this your dog?"
-]
+];
 
 var captions_many = [
 	"Woah...haha, lots of dogs",
@@ -14,7 +14,7 @@ var captions_many = [
 	"It's not that I don't like dogs...",
 	"I mean, do you really need this many dogs?",
 	"Alright, alright...it's your web page.",
-]
+];
 
 /**
  * Given a source URL, puts a new image on the web page dynamically.
@@ -24,7 +24,6 @@ var captions_many = [
  */
 function insertImage(source, container) {
 	var img = document.createElement("img");
-
 	img.className = "puppy";
 	img.src = source;
 	container.append(img);
@@ -117,5 +116,36 @@ function searchForImages(key, count) {
 		insertImages(data.getElementsByTagName('photo'));
 	});
 }
+
+
+var RattyAPI = {
+	CLIENT_ID: "workshop"
+};
+
+/**
+  * Downloads the current meal from the Ratty.
+  * 
+  * 
+  */
+function getRattyMenu() {
+	var url = "https://api.students.brown.edu";
+
+	// Use the /dining/menu endpoint
+	url += "/dining/menu";
+
+	// Apply our client id
+	url +="?client_Id=" + RattyAPI.CLIENT_ID;
+
+	// Ask for the ratty.
+	url += "&eatery=ratty";
+
+	// Send this request
+	$.get(url).then(function(data) {
+		processRattyData(data);
+	});
+}
+
+
+
 
 
