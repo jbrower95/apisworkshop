@@ -1,0 +1,18 @@
+HACK@BROWN 2016: APIs workshop
+
+	Hey there! Thanks for taking the time to come build awesome things with us.
+
+	We're going to build a Javascript application that combines the Flickr API
+	with the Brown API for dining. We're going to show people what's being
+	served at the Ratty!
+
+	These tutorials use jQuery, a free / open source Javascript library that makes
+	some of what we do easier. As jQuery is written in Javascript, it's totally feasible
+	to write these applications without jQuery.
+
+Hack@Brown: http://2016.hackatbrown.org
+Brown APIs: https://api.students.brown.edu
+==============================
+
+
+
