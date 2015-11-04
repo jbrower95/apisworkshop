@@ -34,9 +34,12 @@ var captions_many = [
  *			ex: "http://images.google.com/dog.jpg"
  */
 function insertImage(url) {
+	/* Construct the image tag */
 	var img = document.createElement("img");
 	img.className = "puppy";
 	img.src = url;
+
+	/* Append the image tag */
 	$('#imageContainer').append(img);
 }
 
@@ -44,7 +47,7 @@ function insertImage(url) {
  * Given a list of images returned from the ajax request, add each of them
  * to the document.
  *
- * @param images - image objects in xml form from the flickr api
+ * @param data - raw data object from the flickr api
  *
  */
 function insertImages(data) {
@@ -125,7 +128,7 @@ $(document).ready(function() {
 	/* https://api.flickr.com/services/rest/?method=flickr.test.echo&name=value */
 
 	/* Execute this when the page is loaded */
-	searchForImages(["puppy"], 5, 1);
+	searchForImages(["puppy"], 5, Math.floor(Math.random() * 10));
 });
 
 
@@ -140,6 +143,10 @@ var flickrAPI = {
 /**
  * Instigates a Flickr search for images tagged as "key". Returns "count" number of images.
  *   e.x: searchForImages("dog", 10) returns 10 pictures of dogs.
+ *
+ * @param taglist - Array of tags to search for using the api
+ * @param count - Number of results to return
+ * @param page - The page number from which to return the results
  *
  */
 function searchForImages(taglist, count, page) {
