@@ -1,0 +1,7 @@
+# APIs Workshop Stencil
+
+## Tasks
+* In the function searchForImages, construct the request url, following the
+instructions within the file.
+* In the function insertImages, construct the image urls from the returned
+data, following the instructions within the file.
