@@ -44,7 +44,7 @@ function insertImage(url) {
  * Given a list of images returned from the ajax request, add each of them
  * to the document.
  *
- * @param images - image objects in xml form from the flickr api
+ * @param data - raw data object from the flickr api
  *
  */
 function insertImages(data) {
