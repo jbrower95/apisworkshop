@@ -46,11 +46,8 @@ function insertImage(url) {
 
 function doSearch() {
 	var text = $("#searchBar").val();
-	alert("yo");
 	text = text.split(/[ ,]+/);
-	alert("swag");
-	alert("Searching for: " + String(input));
-	searchForImages(input, 5, 1);
+	searchForImages(text, 5, 1);
 }
 
 /**
