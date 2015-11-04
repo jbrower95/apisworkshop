@@ -73,7 +73,7 @@ function insertImages(data) {
 	var url;
 
 	/* TODO: Set the base url */
-	var baseURL = "";
+	var baseURL = "https://farm";
 
 	/* TODO: construct the url for each image, and add each image with
 	 *	insertImage.
@@ -90,30 +90,35 @@ function insertImages(data) {
 	for(var i = 0; i < images.length; i++)
 	{
 		/* TODO: reset the url */
+		url = baseURL;
 
 		/* TODO: add the farm */
+		url += images[i].getAttribute('farm');
 
 		/* Add the next part of the url */
 		url += ".staticflickr.com/";
 
 		/* TODO: add the server */
+		url += images[i].getAttribute('server');
 
 		/* Add the next part of the url */
 		url += "/";
 
 		/* TODO: add the id */
+		url += images[i].getAttribute('id');
 
 		/* Add the next part of the url */
 		url += "_";
 
 		/* TODO: add the secret */
+		url += images[i].getAttribute('secret');
 
 		/* Add the file suffix */
 		url += ".jpg";
 
 		/* TODO: insert the image */
+		insertImage(url);
 	}
-
 
 	/* Comment this out to remove captions */
 	var captions = (images.length > 4) ? captions_several : captions_few;
@@ -128,6 +133,7 @@ function insertImages(data) {
 $(document).ready(function() {
 	/* Execute this when the page is loaded */
 	searchForImages(["puppy"], 5, Math.floor(Math.random() * 10));
+	$("#searchBar").val("puppy");
 });
 
 
@@ -155,20 +161,25 @@ function searchForImages(taglist, count, page) {
 
 	/* TODO: Set the search method to the search method specified in
 	 * the flickrAPI object above */
+	url += "?method=" + flickrAPI.METHOD_SEARCH;
 
 	/* TODO: Set the api key to the api key specified in the flickrAPI
 	 * object above */
+	url += "&api_key=" + flickrAPI.API_KEY;
 
 	/* TODO: Set the tags to a comma separated list of the values in
 	 * taglist */
+	url += "&tags=" + taglist.join();
 
 	/* TODO: Set the number of results to display */
+	url += "&per_page=" + count;
 
 	/* TODO: Set the page offset to page */
+	url += "&page=" + page;
 
 	/* TODO: Set the callback
 	 * hint: See which of the other methods might be a good fit... */
-	$.get(url).then();
+	$.get(url).then(insertImages);
 }
 
 
