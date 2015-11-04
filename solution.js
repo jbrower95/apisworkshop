@@ -35,7 +35,7 @@ var captions_many = [
  *			ex: "http://images.google.com/dog.jpg"
  */
 function insertImage(url) {
-	/* Construct the image tag */
+	/* TODO: Construct the image tag */
 	var img = document.createElement("img");
 	img.className = "puppy";
 	img.src = url;
@@ -53,7 +53,7 @@ function insertImage(url) {
  	 	win.focus();
 	};
 
-	/* Append the image tag */
+	/* TODO: Append the image tag */
 	$('#imageContainer').append(img);
 }
 
@@ -71,75 +71,22 @@ function doSearch() {
  *
  */
 function insertImages(data) {
-	/* Clear the current images */
-	$("#imageContainer").empty();
-
 	/* Get the photos from the data returned by flickr */
 	var images = data.getElementsByTagName('photo');
 
-	/* Variables constructing the image url
-	 *
-	 * hint: We are using this template
-	 * https://farm{farm}.staticflickr.com/{server}/{id}_{secret}.jpg
-	 *
-	 */
-	var url;
+	/* TODO: Clear the current images */
+	$("#imageContainer").empty();
 
-	/* TODO: Set the base url */
-	var baseURL = "https://farm";
-
-	/* TODO: construct the url for each image, and add each image with
-	 *	insertImage.
-	 *
-	 * hints:
-	 *
-	 * 1) Use image[i] to get the next image on each iteration of
-	 *	the loop.
-	 *
-	 * 2) Use image[i].getAttribute("blabla") to get a specific
-	 *	attribute, such as the id of the object
-	 *
-	 */
 	for(var i = 0; i < images.length; i++)
 	{
-		/* TODO: reset the url */
-		url = baseURL;
-
-		/* TODO: add the farm */
-		url += images[i].getAttribute('farm');
-
-		/* Add the next part of the url */
-		url += ".staticflickr.com/";
-
-		/* TODO: add the server */
-		url += images[i].getAttribute('server');
-
-		/* Add the next part of the url */
-		url += "/";
-
-		/* TODO: add the id */
-		url += images[i].getAttribute('id');
-
-		/* Add the next part of the url */
-		url += "_";
-
-		/* TODO: add the secret */
-		url += images[i].getAttribute('secret');
-
-		/* Add the file suffix */
-		url += ".jpg";
-
-		/* TODO: insert the image */
-		insertImage(url);
+		/* TODO: Create the image using insertImage */
+		/* hint: you can get the url for the image by using the
+		 * function getImageURL() */
+		insertImage(getImageURL(images[i]));
 	}
 
-	/* Comment this out to remove captions */
-	var captions = (images.length > 4) ? captions_several : captions_few;
-	captions = (images.length > 8) ? captions_many : captions;
-	var randCaption = captions[Math.floor(Math.random() * captions.length)];
-
-	$(".caption").text(randCaption);
-	/* Comment this out to remove captions */
+	/* Set the caption */
+	setCaption(images.length);
 }
 
 
@@ -193,6 +140,77 @@ function searchForImages(taglist, count, page) {
 	/* TODO: Set the callback
 	 * hint: See which of the other methods might be a good fit... */
 	$.get(url).then(insertImages);
+}
+
+/**
+ * Given an xml image object from flickr, construct the corresponding
+ * image url, using the format:
+ *	https://farm{farm}.staticflickr.com/{server}/{id}_{secret}.jpg
+ *
+ * @param image - xml image object from flickr
+ *
+ */
+function getImageURL(image)
+{
+	var url = "https://farm";
+	url += image.getAttribute('farm');
+	url += ".staticflickr.com/";
+	url += image.getAttribute('server');
+	url += "/";
+	url += image.getAttribute('id');
+	url += "_";
+	url += image.getAttribute('secret');
+	url += ".jpg";
+	return url;
+}
+
+/* Caption lists */
+var captions_few = [
+	"Dawwwww",
+	"Yummy",
+	"Awww, what a cute wittle puppy",
+	"Excuse me, is this your dog?",
+	"Doge."
+];
+
+var captions_several = [
+	"Woah...haha, lots of dogs",
+	"Hey there, try taking it easy on the dogs",
+	"It's not that I don't like dogs...",
+	"I mean, do you really need this many dogs?",
+	"Alright, alright...it's your web page",
+	"*laughs nervously*"
+];
+
+var captions_many = [
+	"Stop. Too many dogs.",
+	"How could you let this happen??",
+	"I...I have to leave",
+	"You made this what it is, now you have to face the consequences",
+	"*prays*",
+	"*sobs*",
+	"*begs*"
+];
+
+/**
+ * Set the caption based on the number of images
+ *
+ * @param count - the number of images
+ *
+ */
+function setCaption(count)
+{
+	if($("#searchBar").val() == "puppy")
+	{
+		var captions = (count > 4) ? captions_several : captions_few;
+		captions = (count > 8) ? captions_many : captions;
+		var randCaption = captions[Math.floor(Math.random() * captions.length)];
+		$(".caption").text(randCaption);
+	}
+	else
+	{
+		$(".caption").empty();
+	}
 }
 
 
