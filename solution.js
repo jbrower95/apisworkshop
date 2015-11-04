@@ -1,32 +1,5 @@
 /* Examples with the flickr API */
 
-/* Caption lists */
-var captions_few = [
-	"Dawwwww",
-	"Yummy",
-	"Awww, what a cute wittle puppy",
-	"Excuse me, is this your dog?",
-	"Doge."
-];
-
-var captions_several = [
-	"Woah...haha, lots of dogs",
-	"Hey there, try taking it easy on the dogs",
-	"It's not that I don't like dogs...",
-	"I mean, do you really need this many dogs?",
-	"Alright, alright...it's your web page",
-	"*laughs nervously*"
-];
-
-var captions_many = [
-	"Stop. Too many dogs.",
-	"How could you let this happen??",
-	"I...I have to leave",
-	"You made this what it is, now you have to face the consequences",
-	"*prays*",
-	"*sobs*",
-	"*begs*"
-];
 
 /**
  * Given a source URL, puts a new image on the web page dynamically.
@@ -162,55 +135,6 @@ function getImageURL(image)
 	url += image.getAttribute('secret');
 	url += ".jpg";
 	return url;
-}
-
-/* Caption lists */
-var captions_few = [
-	"Dawwwww",
-	"Yummy",
-	"Awww, what a cute wittle puppy",
-	"Excuse me, is this your dog?",
-	"Doge."
-];
-
-var captions_several = [
-	"Woah...haha, lots of dogs",
-	"Hey there, try taking it easy on the dogs",
-	"It's not that I don't like dogs...",
-	"I mean, do you really need this many dogs?",
-	"Alright, alright...it's your web page",
-	"*laughs nervously*"
-];
-
-var captions_many = [
-	"Stop. Too many dogs.",
-	"How could you let this happen??",
-	"I...I have to leave",
-	"You made this what it is, now you have to face the consequences",
-	"*prays*",
-	"*sobs*",
-	"*begs*"
-];
-
-/**
- * Set the caption based on the number of images
- *
- * @param count - the number of images
- *
- */
-function setCaption(count)
-{
-	if($("#searchBar").val() == "puppy")
-	{
-		var captions = (count > 4) ? captions_several : captions_few;
-		captions = (count > 8) ? captions_many : captions;
-		var randCaption = captions[Math.floor(Math.random() * captions.length)];
-		$(".caption").text(randCaption);
-	}
-	else
-	{
-		$(".caption").empty();
-	}
 }
 
 
